@@ -1,0 +1,6 @@
+node_modules
+__test__
+.eslintrc.js
+ios/
+android/
+*.config.js
