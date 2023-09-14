@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface valuesTypes {
     email: string;
     password: string;

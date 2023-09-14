@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable global-require */
-import React, { useEffect } from 'react';
+import React, { type FC, useEffect } from 'react';
 import { type StackScreenProps } from '@react-navigation/stack';
 import {
     Image,
@@ -24,8 +24,7 @@ import styles from './Styles';
 interface Props
     extends StackScreenProps<RootStackParamList, 'RegisterScreen'> {}
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function Register({ navigation }: Props) {
+const Register: FC<Props> = ({ navigation }: Props): JSX.Element => {
     const { values, error, errors, onChange, onRegister, setError } =
         DI.resolve('RegisterViewModel');
     const icons = {
@@ -45,7 +44,6 @@ function Register({ navigation }: Props) {
             }
             setError('');
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error]);
 
     return (
@@ -55,7 +53,8 @@ function Register({ navigation }: Props) {
                     height={200}
                     width={Dimensions.get('screen').width}
                     viewBox="0 0 1440 320"
-                    style={styles.svg}>
+                    style={styles.svg}
+                >
                     <Path
                         fill={MyColors.primary}
                         fill-opacity="1"
@@ -69,7 +68,8 @@ function Register({ navigation }: Props) {
                     style={styles.goBackIconContent}
                     onPress={() => {
                         navigation.pop();
-                    }}>
+                    }}
+                >
                     <Image source={icons.goBack} style={styles.goBackIcon} />
                 </TouchableOpacity>
             </View>
@@ -111,6 +111,6 @@ function Register({ navigation }: Props) {
             <DefaultButton text="REISTRATE" onPress={() => onRegister()} />
         </View>
     );
-}
+};
 
 export default Register;

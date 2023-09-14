@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect } from 'react';
+import React, { type FC, useEffect } from 'react';
 import {
     Text,
     Image,
@@ -22,16 +22,12 @@ import styles from './Styles';
 
 interface Props extends StackScreenProps<RootStackParamList, 'LoginScreen'> {}
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function Login({ navigation }: Props) {
+const Login: FC<Props> = ({ navigation }): JSX.Element => {
     const { email, password, error, onChange, login, setError } =
         DI.resolve('LoginViewModel');
     const icons = {
-        // eslint-disable-next-line global-require
         control: require('@assets/img/game_con_black.png'),
-        // eslint-disable-next-line global-require
         email: require('@assets/img/email.png'),
-        // eslint-disable-next-line global-require
         password: require('@assets/img/password.png'),
     };
 
@@ -44,7 +40,6 @@ function Login({ navigation }: Props) {
             }
             setError('');
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error]);
     return (
         <View style={styles.container}>
@@ -53,7 +48,8 @@ function Login({ navigation }: Props) {
                     height={200}
                     width={Dimensions.get('screen').width}
                     viewBox="0 0 1440 320"
-                    style={styles.svg}>
+                    style={styles.svg}
+                >
                     <Path
                         fill={MyColors.primary}
                         fill-opacity="1"
@@ -84,13 +80,14 @@ function Login({ navigation }: Props) {
             <TouchableOpacity
                 onPress={() => {
                     navigation.navigate('RegisterScreen');
-                }}>
+                }}
+            >
                 <Text style={styles.registerText}>
                     {'Registrate Ahora'.toUpperCase()}
                 </Text>
             </TouchableOpacity>
         </View>
     );
-}
+};
 
 export default Login;

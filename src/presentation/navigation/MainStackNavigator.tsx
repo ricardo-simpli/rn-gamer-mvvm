@@ -16,7 +16,8 @@ export function MainStackNavigatior() {
         <Stack.Navigator
             screenOptions={{
                 headerShown: false,
-            }}>
+            }}
+        >
             <Stack.Screen name="LoginScreen" component={Login} />
             <Stack.Screen name="RegisterScreen" component={Register} />
         </Stack.Navigator>

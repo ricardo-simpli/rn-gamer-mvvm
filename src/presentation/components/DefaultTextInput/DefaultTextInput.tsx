@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type FC } from 'react';
 import { TextInput, View, Image, Text, type KeyboardType } from 'react-native';
 import { MyColors } from '@presentation/theme/AppTheme';
 import styles from './Styles';
@@ -9,16 +9,12 @@ interface Props {
     property: string;
     // eslint-disable-next-line react/require-default-props, @typescript-eslint/no-explicit-any
     image?: any;
-    // eslint-disable-next-line react/require-default-props
     keyboardType?: KeyboardType;
-    // eslint-disable-next-line react/require-default-props
     secureTextEntry?: boolean;
-    // eslint-disable-next-line react/require-default-props
     error?: string;
     onChangeText: (prop: string, value: string) => void;
 }
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function DefaultTextInput({
+const DefaultTextInput: FC<Props> = ({
     placeholder = '',
     value,
     property,
@@ -27,7 +23,7 @@ function DefaultTextInput({
     keyboardType = 'default',
     secureTextEntry = false,
     onChangeText,
-}: Props) {
+}): JSX.Element => {
     return (
         <View style={styles.container}>
             <View style={styles.containerInput}>
@@ -48,6 +44,6 @@ function DefaultTextInput({
             {error != null && <Text style={styles.textError}>{error}</Text>}
         </View>
     );
-}
+};
 
 export default DefaultTextInput;

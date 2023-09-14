@@ -15,12 +15,10 @@ module.exports = {
     extends: [
         'plugin:react/recommended',
         'standard-with-typescript',
+        'standard',
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier',
-        'airbnb',
-        'airbnb-typescript',
-        'airbnb/hooks',
         'plugin:prettier/recommended',
         'prettier',
     ],
@@ -40,7 +38,7 @@ module.exports = {
         ],
         'no-use-before-define': [
             'error',
-            { functions: true, classes: true, variables: true },
+            { functions: true, classes: true, variables: false },
         ],
         'react-native/no-unused-styles': 'error',
         'react-native/split-platform-components': 'error',
